@@ -68,14 +68,17 @@ public class Main {
                             editedData = sc.nextLine();
                             switch (editedData){
                                 case "name" :
+                                    editedData = sc.nextLine();
                                     contacts.get(locator).setName(editedData);
 
                                     break;
                                 case "surname" :
+                                    editedData = sc.nextLine();
                                     contacts.get(locator).setSurame(editedData);
 
                                     break;
                                 case "number" :
+                                    editedData = sc.nextLine();
                                     contacts.get(locator).setPhoneNo(editedData);
 
                                     break;
@@ -152,6 +155,7 @@ public class Main {
         }
 
         public void setPhoneNo(String phoneNo) {
+            
             this.phoneNo = phoneNo;
         }
 
