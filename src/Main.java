@@ -2,6 +2,8 @@ import javax.xml.transform.sax.SAXSource;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 public class Main {
 
@@ -13,8 +15,6 @@ public class Main {
         Person person;
         int locator;
         String editedData;
-
-
 
         do {
             System.out.print("Enter action (add, remove, edit, count, list, exit): ");
@@ -155,8 +155,21 @@ public class Main {
         }
 
         public void setPhoneNo(String phoneNo) {
-            
-            this.phoneNo = phoneNo;
+            String pattern1 = "^\\+?((\\((\\d|[a-zA-Z]){2,}\\))|(((\\d|[a-zA-Z]){2,}[\\s-])(\\((\\d|[a-zA-Z]){2,}\\))))?([\\s-](\\d|[a-zA-Z]){2,})*$";  // pierwszy lub drugi człon w nawiasach
+            String pattern2 = "^\\+?((\\d|[a-zA-Z]){2,}[\\s-]?)+$";                                                                                     // brak nawiasów
+//            Pattern p1 = Pattern.compile(pattern1);
+//            Pattern p2 = Pattern.compile(pattern2);
+
+//            Matcher m1 = p1.matcher(phoneNo);
+//            Matcher m2 = p2.matcher(phoneNo);
+
+            if(phoneNo.matches(pattern1) || phoneNo.matches(pattern2)){
+                this.phoneNo = phoneNo;
+            }else {
+                System.out.println("Wrong number format!");
+                this.phoneNo = "[no number]";
+            }
+
         }
 
         @Override
